@@ -14,6 +14,5 @@
 
 
 ## Vanilla JS
-[try-catch문][try-catch]
-[try-catch]: https://github.com/Jaesin22/TIL/blob/main/vanillaJS/try-catch.md "try..catch"
+[try..catch문](https://github.com/Jaesin22/TIL/blob/main/vanillaJS/try-catch.md)
 
