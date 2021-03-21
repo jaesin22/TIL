@@ -14,5 +14,5 @@
 
 
 ## Vanilla JS
-[try..catch문](https://github.com/Jaesin22/TIL/blob/main/vanillaJS/try-catch.md)
-
+* [try..catch문](https://github.com/Jaesin22/TIL/blob/main/vanillaJS/try-catch.md)
+* [자바스크립트 기초 문법](https://github.com/Jaesin22/TIL/blob/main/vanillaJS/basic-grammar.md)
