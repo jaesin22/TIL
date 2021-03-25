@@ -21,4 +21,12 @@ if(isNaN(num)) {
 
 ### 이벤트 핸들러의 종류 
 -------------
-## OnClick, onKeyUp, onSelect 등등 여러가지가 있다.
+#### OnClick, onKeyUp, onSelect 등등 여러가지가 있다.
+
+## property
+#### 기본적으로 property는 어떤 값을 나타낸다. 그런데 이 값이 다른 값과 연관을 가지고 있을 때 property라고 부른다.
+
+
+## method(메소드)
+#### 
+
