@@ -28,5 +28,19 @@ if(isNaN(num)) {
 
 
 ## method(메소드)
-#### 
+#### 프로퍼티의 값으로 함수가 올 수도 있는데, 이러한 프로퍼티를 메소드라고 한다.
+```javascript
+var person = {
+    person.age = 20
+    person.birthday = 2000.6.8
+    person.style = function() { // 이 부분이 메소드0
+        console.log("nice style");
+    }
+
+person.style() // nice style
+person.style // function() {console.log("nice style"); }
+}
+```
+#### 메소드를 참조할 때 메소드 이름 뒤에 괄호({})를 붙이지 않으면, 메소드가 아닌 프로퍼티 그 자체를 참조하게 된다.   따라서 괄호를 사용하지 않고 프로퍼티 그 자체를 참조하게 되면 해당 메소드의 정의 그 자체가 반환된다.
+
 
