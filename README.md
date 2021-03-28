@@ -16,3 +16,5 @@
 ## Vanilla JS
 * [try..catch문](https://github.com/Jaesin22/TIL/blob/main/vanillaJS/try-catch.md)
 * [자바스크립트 기초 문법](https://github.com/Jaesin22/TIL/blob/main/vanillaJS/basic-grammar.md)
+* [this 정리](https://github.com/Jaesin22/TIL/blob/main/vanillaJS/this.md)
+* [프로퍼티 정리](https://github.com/Jaesin22/TIL/blob/main/vanillaJS/property.md)
