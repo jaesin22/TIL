@@ -38,3 +38,29 @@ console.log(window.name, window.age); // Jaesin 22
 var T = new Person('Jaesin', 22) // Person{name: "Jaesin", age: 22}
 T.sayHi(); // Jaesin 22
 ```
+### 메소드 실행에서의 this
+#### 메소드 실행에서의 this는 메소드를 소유하고 있는 객체를 가리킨다.   객체 내부의 속성으로 정의된 함수가 실행될 때, this는 객체 자신이 되는 것이다.
+```javascript
+var myObject =  {
+    myMethod : function() {
+        this; 
+    }
+};
+myObject.myMethod(); // 여기서는 myObject가 this가 된다.
+```
+-------------
+### Arrow Function에서의 this
+#### Arrow Function에서 this는 arrow function이 정의된 곳의 문맥을 그대로 따른다.
+```javascript
+function es6this() {
+    console.log('Inside `objFunction`: ', this.foo); // 13
+        foo: 25,
+    bar: () => console.log('Inside `bar`:', this.foo) // 13
+  };
+}
+objFunction.call({foo: 13}).bar();
+```
+#### 출력값은 둘 다 13이 된다. arrow function이 자신을 둘러싼 환경의 this 문맥을 그대로 따르기 때문이다. 9라인에서 간접 실행이 일어나며 this의 문맥이 결정되면 arrow function도 그대로 따른다. 따라서 arrow function은 실행 도중 this의 스코프를 바꾸고 싶지 않을 때 유용하다.
+
+
+### 출처: https://kim-solshar.tistory.com/42 [김솔샤르의 인사이트]
