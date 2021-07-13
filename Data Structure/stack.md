@@ -35,15 +35,15 @@ class Stack:
   - 해결 방법
     * '(' 일 때 스택에 push 하고 ')'일 때 pop을 해서 짝이 맞을 때 마다 맨 위의 스택을 비워줌. 그렇게 해서 stack의 len이 0이면 true, 0이 아니면 false
   -  코드
-    ```python
-    S = Stack() # 위에 기술해놓은 클래스 호출
-    for p in parseL :
-      if p == '(' : S.push(p)
-      elif p == ')' S.pop()
-      else : print("Not allowed Symbol")
-    if len(S) > 0 : return False
-    else : return True
-  ```
+```python
+  S = Stack() # 위에 기술해놓은 클래스 호출
+  for p in parseL :
+    if p == '(' : S.push(p)
+    elif p == ')' S.pop()
+    else : print("Not allowed Symbol")
+  if len(S) > 0 : return False
+  else : return True
+```
 
 ### 예 2: 계산기 코드 작성
   * 2+3*5 입력
