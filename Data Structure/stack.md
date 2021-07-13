@@ -44,3 +44,18 @@ class Stack:
     if len(S) > 0 : return False
     else : return True
   ```
+
+### 예 2: 계산기 코드 작성
+  * 2+3*5 입력
+    - 이항 연산자(binary opeerator) -> 2+3, 3*5 같은 거
+    - 단항 연산자(unary operator) -> +3-6 같은 거..
+    - infix 수식 > 2+3*5 같은거 연산자가 피 연산자 사이에 있는 형식으로 쓰면 형식을 infix 수식
+    - postfix 수식 > 2 3 5 * + 
+
+  * 어떻게 infix를 postfix로 바꿀 수 있는가?
+    1. 괄호치기 (2 +(3*5))
+    2. 연산자의 오른쪽 괄호 다음으로 연산자 이동
+    3. 괄호 지우기
+  * 예시 3 * (2+5) * 4를 postfix로
+    1. 괄호 치기 > ((3 * (2+5)) * 4)
+    2. 3 2 5 4 *+*
