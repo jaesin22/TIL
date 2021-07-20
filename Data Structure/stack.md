@@ -3,6 +3,8 @@
 * stack :  삼입 : push, 삭제 : pop, top : stack 제일 위에 값 리턴, len : stack 안의 데이터 개수 출력
 * 리스트 : 삼입 :  append, 삭제 : pop
 
+* LIFO(Last In First Out), 차근차근 위로 올라가면서 쌓이듯이 삽입됨. 삭제될 때는 맨 위에 값부터 삭제됨.
+
 ```python
 class Stack:
     def __init__(self):
