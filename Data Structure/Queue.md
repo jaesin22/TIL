@@ -20,7 +20,7 @@ class Queue :
         if self.front_index == len(self.items) : 
             print("Q is empty")
             return None
-            else : x = self.items[front_index]
+            else : x = self.items[self.front_index]
             self.front_index += 1
             return x
 ```
