@@ -31,3 +31,36 @@ class SinglyLinkedList:
 ```
 
 ### 한방향 연결리스트 : PopFront, PopBack
+#### PopFront, PopBack 예제
+```python
+def popFront(self):
+    if len(self) == 0:
+        return None
+    else : #하나 이상의 노드 존재
+        x = self.head
+        key = x.key
+        self.head = x.next
+        self.size -= 1
+        del x
+        return key
+
+def popBack(self):
+    if len(self) == 0 : return None
+    else :
+        prev, tail = None, self.head
+        while tail.next != None :
+            prev = tail
+            tail = tail.next
+        if len(self) == 1:
+            self.head = None
+        else prev.next = tail.next
+
+        key = tail.key
+        del tail
+        self.size -= 1
+        return key
+```
+
+#### push/popfront, push/popback의 시간 복잡도 구하기
+* pushFront, pushPop : O(1)
+* pushBack, popBack : O(n)
