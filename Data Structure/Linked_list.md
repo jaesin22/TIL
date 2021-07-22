@@ -5,7 +5,7 @@
 
 
 ### 한방향 연결리스트 : pushFront, pushBack
-#### 한방향 연결리스트 예제
+#### 한방향 연결리스트 pushFront, pushBack 예제
 ```python
 * L = singlyLinkedList()
 * L.pushFront(5) # L에 5를 넣었을 때 예시
@@ -16,9 +16,9 @@ class SinglyLinkedList:
         self.size = 0
     def pushFront(self, key) :
         new_node = Node(key)
-        new_node.next = L.head
-        L.head = new_node
-        L.size += 1
+        new_node.next = self.head
+        self.head = new_node
+        self.size += 1
     def pushBack(self, key):
         V = Node(key)
         if len(self) == 0 : self.head = V
@@ -30,3 +30,4 @@ class SinglyLinkedList:
 
 ```
 
+### 한방향 연결리스트 : PopFront, PopBack
