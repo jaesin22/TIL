@@ -61,6 +61,6 @@ def popBack(self):
         return key
 ```
 
-#### push/popfront, push/popback의 시간복잡도
+#### push/popfront, push/popback의 시간복잡도는?
 * pushFront, pushPop : O(1)
 * pushBack, popBack : O(n)
