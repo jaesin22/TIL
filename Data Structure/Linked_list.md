@@ -61,6 +61,6 @@ def popBack(self):
         return key
 ```
 
-#### push/popfront, push/popback의 시간 복잡도 구하기
+#### push/popfront, push/popback의 시간복잡도
 * pushFront, pushPop : O(1)
 * pushBack, popBack : O(n)
