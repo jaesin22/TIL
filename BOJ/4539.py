@@ -5,6 +5,8 @@ for x in N:
     res.append(input())
 
 for y in res:
-    if cnt < y:
-        cnt = cnt * 10
+    inty = int(y)
+    for i in range(len(y)):
+        if cnt < inty:
+            cnt = cnt * 10
 
