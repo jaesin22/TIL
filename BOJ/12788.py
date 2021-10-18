@@ -13,8 +13,8 @@ if sum(A) < M * K:
 else :
     for x in A:
         if num <= 0:
-            print(cnt)
             break
         else:
             num = num - x
             cnt += 1
+    print(cnt)
