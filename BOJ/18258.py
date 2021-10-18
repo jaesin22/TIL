@@ -1,5 +1,6 @@
 import sys
-res = []
+from collections import deque
+res = deque()
 
 def push(X):
     res.append(X)
@@ -10,7 +11,7 @@ def pop():
         print('-1')
     else:
         print(res[0])
-        res.pop(0)
+        res.popleft()
 
 def size():
     print(len(res))
