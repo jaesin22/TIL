@@ -1,7 +1,13 @@
-from collections import deque
 N, K = map(int, input().split())
+array = [i for i in range(1,N+1)]   
+result = []
+num = 0
 
-res = list(range(1, N+1))
+for t in range(N):
+    num += K - 1
+    if num >= len(array):
+        num = num%len(array)
 
-for x in res:
-    deque.push(x)
+    result.append(str(array.pop(num)))
+
+print("<",", ".join(result)[:],">", sep='')
