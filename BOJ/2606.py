@@ -10,11 +10,13 @@ for _ in range(m):
 
 visited = [0] * (n+1)
 cnt = 0
+print(graph)
 
 def dfs(start):
     global cnt
     visited[start] = 1
     for i in graph[start]:
+        print(i)
         if visited[i] == 0:
             dfs(i)
             cnt += 1
