@@ -17,11 +17,13 @@ def DFS_with_adj_list(graph, root):
         n = stack.pop()  # 1 4 3 5 6 2
         if n not in visited:
             visited.append(n)
-            # [1] [1, 4] [1,4,3] [1,4,3,5] [1,4,3,5,6] [1,4,3,5,6,2]
             stack += graph[n] - set(visited)
-            print(graph[n] - set(visited))  # {3,4} set() {5} {2,6} set() set()
+            # print(graph[n])  # {3, 4} {1} {1, 5} {2, 6} {3, 5} {3, 4, 5}
+            # print(set(visited)) # {1} {1, 4} {1, 3, 4} {1, 3, 4, 5} {1, 3, 4, 5, 6} {1, 2, 3, 4, 5, 6}
+            # print(graph[n] - set(visited))  # {3,4} set() {5} {2,6} set() set()
 
-    return visited
+    return visited  # [1] [1, 4] [1,4,3] [1,4,3,5] [1,4,3,5,6] [1,4,3,5,6,2]
 
 
 print(DFS_with_adj_list(graph_list, root_node))
+print({1} - {1, 4})
