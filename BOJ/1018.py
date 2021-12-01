@@ -1,29 +1,48 @@
 import sys
 
-input = sys.stdin.readline 
-A, B = map(int, input().split())
-res = []
-for i in range(A):
-    res.append(input())
-rep = []
+sys.setrecursionlimit(10 ** 8)
 
-for i in range(A-7):
-    for j in range(B-7):
-        first_W = 0
-        first_B = 0
-        for k in range(i,i+8):
-            for l in range(j,j + 8):
-                if (k + l) % 2 == 0:
-                    if res[k][l] != 'W':
-                        first_W = first_W+1
-                    if res[k][l] != 'B':
-                        first_B = first_B + 1
-                else:
-                    if res[k][l] != 'B':
-                        first_W = first_W+1
-                    if res[k][l] != 'W':
-                        first_B = first_B + 1
-        rep.append(first_W)
-        rep.append(first_B)
+def dfs(x: int, y: int):
+    # 배추가 아님
+    if x < 0 or x >= N or \
+        y < 0 or y >= M :
+        return False
+    
+    # 배추임
+    if graph[x][y] == 1:
+        graph[x][y] = 0 # 방문
 
-print(min(rep))
+        dfs(x, y + 1) # 상
+        dfs(x, y - 1) # 하
+        dfs(x - 1, y) # 좌
+        dfs(x + 1, y) # 우 
+
+        return True
+    
+    return False
+
+
+
+T = int(input())
+result = []
+
+for i in range(T) :
+    M, N, K =  map(int, sys.stdin.readline().split())
+    graph = [[0] * M for i in range(N)] # 0 으로 초기화
+
+    for _ in range(K):
+        y, x = map(int, sys.stdin.readline().split())
+        graph[x][y] = 1 # 배추 있는곳 1
+    
+    count = 0
+
+    for i in range(N):
+        for j in range(M):
+            if graph[i][j] == 1:
+                if dfs(i, j):
+                    count += 1
+
+    result.append(count)
+
+for n in result:
+    print(n)
