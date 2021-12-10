@@ -1,28 +1,19 @@
-# import sys
-# from queue import PriorityQueue
+import heapq
+import sys
 
-# queue = PriorityQueue()
+input = sys.stdin.readline
+heap = []
+heapq.heapify(heap)
+N = int(input())
+array = []
 
-# N = int(sys.stdin.readline())
+for i in range(N):
+    array.append(int(input()))
 
-# for i in  range(N):
-#     x = int(sys.stdin.readline())
-#     queue.put(x)
-
-#     if x == 0:
-#         print(queue[])
-
-from queue import PriorityQueue
-
-queue = PriorityQueue()
-
-queue.put(3)
-queue.put(4)
-queue.put(2)
-queue.put(5)
-queue.put(1)
-
-print(queue)
-
-for x in range(5):
-    print(queue[x])
+for x in array:
+    if x == 0 and len(heap) == 0:
+        print(0)
+    elif x == 0:
+        print(abs(heapq.heappop(heap)))
+    else:
+        heapq.heappush(heap,  -x)
