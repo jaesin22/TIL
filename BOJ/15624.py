@@ -1,16 +1,11 @@
-import sys
-from collections import deque
+N = int(input())
+a, b, c = 0, 1, 1
+temp = 0
 
-N = int(sys.stdin.readline())
-d = deque([0] * (N+1))
+for i in range(N):
+    temp = c
+    a = b
+    b = temp
+    c = a + b
 
-d[0] = 0
-d[1] = 1
-d[2] = 1
-for x in range(3, N+1):
-    if d[x] != 0:
-        d[x] = d[x]
-    d[x] = d[x - 1] + d[x - 2]
-
-
-print(d[N] % 1000000007)
+print(a)
