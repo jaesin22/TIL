@@ -5,7 +5,6 @@ graph = []
 for _ in range(N):    
     graph.append(list(map(int, input().split())))
 
-visited = [[0] * M for _ in range(N)]
 res = []
 dx = [-1,1,0,0]
 dy = [0,0,-1,1]
@@ -29,6 +28,7 @@ def bfs():
 
                     # 치즈가 아닌 부분만 q에 넣어준다.
                     # 가장자리만 체크해주기위함
+                    # 0(공기)에서 만난 1(치즈)는 늘 가장자리일 수 밖에 없기 때문
                     queue.append((nx, ny))
 
                 elif graph[nx][ny] == 1:
