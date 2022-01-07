@@ -36,7 +36,7 @@ def bfs():
 
                     # 가장자리 부분만 처리해주기때문에 만약에 공기와 접촉한 칸은 q에 넣어주지않는다.
                     # 넣게되면 안쪽 치즈까지 녹음 처리 되기 때문이다.
-                    graph[nx][ny] =0
+                    graph[nx][ny] = 0
                     visited[nx][ny] = 1
                     cnt += 1
     res.append(cnt)
