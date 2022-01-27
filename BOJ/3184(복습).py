@@ -48,7 +48,6 @@ for i in range(R):
                 s = 0
             else :
                 w = 0
-                
             wolf += w
             sheep += s
 
