@@ -1,45 +1,26 @@
-import sys
 from collections import deque
 
+N, M = map(int, input().split())
 graph = []
+for _ in range(N):
+    graph.append(list(input()))
 
-n, m = map(int, input().split())
-for x in range(n):
-    graph.append(list(map(int, input())))
+dx = [-1,1,0,0]
+dy = [0,0,-1,1]
 
-visited = [[0] * m for _ in range(n)]
-dx = [-1, 1, 0, 0]
-dy = [0, 0, -1, 1]
-res = []
-cnt = 0
+queue = [[0, 0]]
+graph[0][0] = 1
+while queue:
+    a, b = queue[0][0], queue[0][1]
+    del queue[0]
 
-
-def bfs(x, y):
-    global cnt
-    queue = deque()
-
-    queue.append((x, y))
-    visited[x][y] = 1
-    while queue:
-        a, b = queue.popleft()
-
-        for i in range(4):
-            nx = a + dx[i]
-            ny = b + dy[i]
-
-            if 0 <= nx < n and 0 <= ny < m and visited[nx][ny] == 0 and graph[nx][ny] != 0:
-                visited[nx][ny] = 1
-                queue.append((nx, ny))
-                graph[nx][ny] = 3
-                cnt += 1
-        res.append(cnt)
-        cnt = 0
-
-
-for i in range(n):
-    for j in range(m):
-        if visited[i][j] == 0 and graph[i][j] != 0:
-            bfs(i, j)
-
-res.sort()
-print(res)
+    for i in range(4):
+        nx = a + dx[i]
+        ny = b + dy[i]
+        if 0 <= nx < N and 0 <= ny < M and graph[nx][ny] == "1":
+            queue.append((nx, ny))
+            graph[nx][ny] = graph[a][b] + 1
+# 0, 0부터 bfs를 이용해 동, 서, 남, 북을 검사하여 "1"인 값을 찾는다.
+# 만약 "1"이라면 기준이 되는 숫자에 +1을 하여 값을 넣어준다.
+# 이렇게 쭉 검사를 해나가면 마지막 s[n - 1, m - 1]에는 최솟값이 들어가게 된다.
+print(graph[N-1][M-1]) # graph의 끝에 있는 값 출력
