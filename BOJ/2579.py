@@ -1,18 +1,19 @@
 import sys
 input = sys.stdin.readline
+n = int(input().strip())
+stairs = [int(input().strip()) for _ in range(n)]
+dp = [0 for _ in range(n+1)]
 
-N = int(input())
-dp = [0 for _ in range(N+3)]
-arr = [0 for _ in range(N+3)]
-for k in range(1,N+1):
-    arr[k] = int(input())
+if n>=3:
+    dp[0] = stairs[0]
+    dp[1] = stairs[0]+stairs[1]
+    dp[2] = max(stairs[0]+stairs[2],stairs[1]+stairs[2])
 
-
-dp [1] = arr[1]
-dp [2] = arr[1] + arr[2]
-dp [3] = max(arr[1] + arr[3] ,arr[2] + arr[3])
-
-
-for i in range(4, N+1):
-    dp[i] = max( dp[i-3] + arr[i-1] + arr[i] ,  dp[i-2] + arr[i] ) 
-print(dp[N])
+    for i in range(3,n):
+        dp[i] = max( stairs[i-1]+dp[i-3]+stairs[i], dp[i-2],stairs[i] )
+        		#max(직전칸의 값+3개 전 계단의 최댓값+현재값, 2개 전 계단의 최댓값 + 현재값)
+    print(dp[-2])
+else:
+    if n==1: print(stairs[0])
+    elif n==2: print(stairs[0]+stairs[1])
+    elif n==3: print(max(stairs[0]+stairs[2],stairs[1]+stairs[2]))

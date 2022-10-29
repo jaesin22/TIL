@@ -1,11 +1,11 @@
 import sys
 
-a,b,c = map(int, input().split())
-print(a)
-d = 1
-numb = []
-for x in range(a):
-    numb.append(d)
-    d = d + 1
+n, kim, lim = map(int, sys.stdin.readline().split())
+cnt = 0
 
-print(numb)
+while lim != kim:
+    lim -= lim//2
+    kim -= kim//2
+    cnt += 1
+
+print(cnt)
