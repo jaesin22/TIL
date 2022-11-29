@@ -36,7 +36,7 @@ def bfs():
                             else : day = True
                             queue.append((nx, ny, k-1, d + 1))
 
-                    if day == False and graph[nx][ny] == 1:
+                    elif day == False and graph[nx][ny] == 1:
                         visited[nx][ny][k] = visited[a][b][k] + 1
                         queue.append((a, b, k, d + 1))             
                         if day == True: day = False
