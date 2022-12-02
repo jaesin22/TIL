@@ -29,18 +29,20 @@ def bfs():
 
             if 0 <= nx < N and 0 <= ny < M:
                 if k > 0:
-                    if day == True and graph[nx][ny] == 1:
-                        if graph[nx][ny] == 1 and visited[nx][ny][k-1] == 0:
-                            visited[nx][ny][k-1] = visited[a][b][k-1] + 1
+                    if graph[nx][ny] == 1:
+                        if day == True:
+                            if graph[nx][ny] == 1 and visited[nx][ny][k-1] == 0:
+                                visited[nx][ny][k-1] = visited[a][b][k-1] + 1
+                                if day == True: day = False
+                                else : day = True
+                                queue.append((nx, ny, k-1, d + 1))
+
+                        # elif day == False and graph[nx][ny] == 1:
+                        else:
+                            visited[nx][ny][k] = visited[a][b][k] + 1
+                            queue.append((a, b, k, d + 1))             
                             if day == True: day = False
                             else : day = True
-                            queue.append((nx, ny, k-1, d + 1))
-
-                    elif day == False and graph[nx][ny] == 1:
-                        visited[nx][ny][k] = visited[a][b][k] + 1
-                        queue.append((a, b, k, d + 1))             
-                        if day == True: day = False
-                        else : day = True
                 
                 if graph[nx][ny] == 0 and visited[nx][ny][k] == 0:
                         visited[nx][ny][k] = visited[a][b][k] + 1

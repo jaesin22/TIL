@@ -1,35 +1,38 @@
+import queue
 import sys
 from collections import deque
-
 input = sys.stdin.readline
-
-t = int(input())
-
-dx = [1, -1, 0, 0]
-dy = [0, 0, -1, 1]
+T = int(input())
+dx = [0,0,-1,1]
+dy = [-1,1,0,0]
 
 def bfs(x, y):
-    queue = deque([x,y])
-    while queue:
-        a, b = queue[0][0], queue[0][1]
-        del queue[0]
-        for i in range(4):
-            q = a + dx[i]
-            w = b + dy[i]
-            if 0 <= q < n and 0 < w and s[q][w] == 1:
-                s[q][w] = 0
-                queue.append([q,w])
+    queue = deque()
+    graph[x][y] = 0
+    queue.append((x, y))
 
-for i in range(t):
-    m,n,k = map(int, input().split())
-    s = [[0] * m for i in range(n)]
+    while queue:
+        a, b = queue.popleft()
+
+        for i in range(4):
+            nx = a + dx[i]
+            ny = b + dy[i]
+            if 0 <= nx < N and 0 <= ny < M and graph[nx][ny] == 1:
+                graph[nx][ny] = 0
+                queue.append((nx, ny))
+
+for x in range(T):
     cnt = 0
-    for j in range(k):
+    M, N, K = map(int, input().split())
+    graph = [[0] * N for _ in range(M)]
+    for _ in range(K):
         a, b = map(int, input().split())
-        s[b][a] = 1
-    for q in range(n):
-        for w in range(m):
-            if s[q][w] == 1:
-                bfs(q, w)
-                s[q][w] = 0
-                cnt += 1 
+        graph[a][b] = 1
+    
+    for i in range(M):
+        for j in range(N):
+            if graph[i][j] == 1:
+                bfs(i, j)
+                cnt += 1
+    print(cnt)
+

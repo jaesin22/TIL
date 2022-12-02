@@ -1,39 +1,41 @@
 import sys
+input = sys.stdin.readline
 
-def cut(x, y, n):
+N = int(input())
+graph = []
+for x in range(N):
+    graph.append(list(map(int, input().split())))
+
+
+minus, zero, plus = 0,0,0
+
+def recursion(x, y, n):
     global minus, zero, plus
-    num = paper[x][y]   # 첫 번째 숫자
+    current = graph[x][y]
 
-    for i in range(x, x+n):
-        for j in range(y, y+n):
-            if num != paper[i][j]:
+    for i in range(x, x + n):
+        for j in range(y, y + n):
+            if current != graph[i][j]:
+                next_n = n // 3
                 # 1, 2, 3
-                cut(x, y, n // 3)
-                cut(x, y + n // 3, n // 3)
-                cut(x, y + n // 3 * 2, n // 3)
+                recursion(x, y, next_n)
+                recursion(x, y + next_n, next_n)
+                recursion(x, y + next_n*2, next_n)
                 # 4, 5, 6
-                cut(x + n // 3, y, n // 3)
-                cut(x + n // 3, y + n // 3, n // 3)
-                cut(x + n // 3, y + n // 3 * 2, n // 3)
-                
+                recursion(x + next_n, y, next_n)
+                recursion(x + next_n, y + next_n, next_n)
+                recursion(x + next_n, y + next_n * 2, next_n)
                 # 7, 8, 9
-                cut(x + n // 3 * 2, y, n // 3)
-                cut(x + n // 3 * 2, y + n // 3, n // 3)
-                cut(x + n // 3 * 2, y + n // 3 * 2, n // 3)
+                recursion(x + next_n * 2, y, next_n)
+                recursion(x + next_n * 2, y + next_n, next_n)
+                recursion(x + next_n * 2, y + next_n * 2, next_n)
                 return
-            
-    if num == -1:
-        minus += 1
-    elif num == 0:
-        zero += 1
-    elif num == 1:
-        plus += 1
+    if graph[x][y] == -1: minus += 1
+    elif graph[x][y] == 0: zero += 1
+    else: plus += 1
+    return
 
 
-if __name__ == '__main__':
-    n = int(sys.stdin.readline())
-    paper = [list(map(int, sys.stdin.readline().split())) for _ in range(n)]
 
-    minus, zero, plus = 0, 0, 0
-    cut(0, 0, n)
-    print(minus, zero, plus, sep='\n')
+recursion(0,0,N)
+print(minus, zero, plus, sep='\n')
