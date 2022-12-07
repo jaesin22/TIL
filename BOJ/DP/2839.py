@@ -1,7 +1,7 @@
 INF = int(1e9)
 n = int(input())
 
-d = [INF] * 100
+d = [INF] * 5001
 d[3] = 1
 d[5] = 1
 for i in range(3, n+1):
@@ -10,4 +10,4 @@ for i in range(3, n+1):
 if d[n] == INF:
     print(-1)
 else:
-    print(d)
+    print(d[n])
