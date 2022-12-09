@@ -1,7 +1,7 @@
 N = int(input())
 numbers = list(map(int, input().split()))
 
-dp = numbers[:]
+dp = [0] * (N+1)
 dp[0] = numbers[0]
 for i in range(1, N):
     for j in range(i):
