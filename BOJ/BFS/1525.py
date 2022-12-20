@@ -28,13 +28,14 @@ def bfs():
             if 0 <= nx < 3 and 0 <= ny < 3:
                 nextTemp = list(temp) # 위치 교환 쉽게 하기 위해 리스트로 변환
                 nextIdx = nx * 3 + ny  # 위치 교환할 인덱스
-                nextTemp[idx], nextTemp[nextIdx] = nextTemp[nextIdx], nextTemp[idx]
+                nextTemp[idx], nextTemp[nextIdx] = nextTemp[nextIdx], nextTemp[idx] # 위치 교환
                 nextTemp = ''.join(nextTemp) # 문자열로 재변환
 
                 if nextTemp in check: # 이미 방문한 곳인지 확인
                     continue
-
+                
                 check.add(nextTemp) # 방문 표시
+                print(check)
                 queue.append((nextTemp, cnt + 1)) # (위치 교환한 문자열, 횟수+1)해서 큐에 담기
     return -1
                 
