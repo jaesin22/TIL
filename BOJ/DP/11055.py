@@ -1,13 +1,12 @@
 N = int(input())
-numbers = list(map(int, input().split()))
 
-dp = [0] * (N+1)
-dp[0] = numbers[0]
+dp = [0] * N
+
+arr = list(map(int, input().split()))
+dp[0] = arr[0]
 for i in range(1, N):
+    dp[i] = arr[i]
     for j in range(i):
-        if numbers[j] < numbers[i]:
-            dp[i] = max(dp[i], dp[j] + numbers[i])
-
-
-# print(dp)
+        if arr[j] < arr[i] and dp[j] + arr[i] > dp[i]:
+            dp[i] = dp[j] + arr[i]
 print(max(dp))
