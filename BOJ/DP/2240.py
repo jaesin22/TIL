@@ -27,6 +27,5 @@ for i in range(1, T+1):
 
         else:
             dp[i][j] = max(dp[i-1][j], dp[i-1][j-1])
-        print(dp[i][j], j)
 print(max(dp[-1]))
 print(dp)
