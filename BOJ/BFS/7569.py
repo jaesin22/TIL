@@ -1,47 +1,50 @@
-from collections import deque
 import sys
+from collections import deque
 input = sys.stdin.readline
-m, n, h = map(int, input().split())
-board = [[list(map(int, input().split())) for _ in range(n)] for _ in range(h)]
-dx = (1, 0, 0, -1, 0, 0)
-dy = (0, 1, 0, 0, -1, 0)
-dz = (0, 0, 1, 0, 0, -1)
-q = deque()
+dx = [1, 0, 0, -1, 0, 0]
+dy = [0, 1, 0, 0, -1, 0]
+dz = [0, 0, 1, 0, 0, -1]
 
-def print_max():
-    _max = 0
-    for i in range(h):
-        for j in range(n):
-            for k in range(m):
-                if not board[i][j][k]:
-                    return False
-                if _max < board[i][j][k]:
-                    _max = board[i][j][k]
-    return _max-1
-
-def solve_bfs():
-    while q:
-        x, y, z = q.popleft()
+res = 0
+def bfs():
+    global res
+    while queue:
+        a, b, c, res = queue.popleft()
         for i in range(6):
-            nx, ny, nz = x + dx[i], y + dy[i], z + dz[i]
-            if 0 <= nx < h and 0 <= ny < n and 0 <= nz < m:
-                if not board[nx][ny][nz]:
-                    board[nx][ny][nz] = board[x][y][z] + 1
-                    q.append((nx, ny, nz))
-zero = False
-for i in range(h):
-    for j in range(n):
-        for k in range(m):
-            if board[i][j][k] == 1:
-                q.append((i, j, k))
-            elif not board[i][j][k]:
-                zero = True
-if not zero:
-    print(0)
+            nz = a + dz[i]
+            nx = b + dx[i]
+            ny = c + dy[i]
+
+            if 0 <= nz < H and 0 <= nx < N and 0 <= ny < M:
+                if graph[nz][nx][ny] == 0 and visited[nz][nx][ny] == 0:
+                    graph[nz][nx][ny] = 1
+                    visited[nz][nx][ny] = visited[a][b][c] + 1
+                    queue.append((nz, nx, ny, res + 1))
+
+M, N, H = map(int, input().split())
+graph = [[list(map(int, input().split())) for _ in range(N)] for _ in range(H)]
+visited = [[[0] * M for _ in range(N)] for _ in range(H)]
+queue = deque()
+for i in range(H):
+    for j in range(N):
+        for k in range(M):
+            if graph[i][j][k] == 1:
+                visited[i][j][k] = 1
+                queue.append((i, j, k, 0))
+
+bfs()
+flag = True
+for i in range(H):
+    if not flag:
+        break
+    for j in range(N):
+        for k in range(M):
+            if not flag:
+                break
+            if graph[i][j][k] == 0:
+                flag = False
+
+if flag:
+    print(res)
 else:
-    solve_bfs()
-    out = print_max()
-    if not out:
-        print(-1)
-    else:
-        print(out)
+    print(-1)

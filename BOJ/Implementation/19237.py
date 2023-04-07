@@ -26,7 +26,7 @@ for i in range(N):
     for j in range(N):
         if graph[i][j] != 0:
             queue.append((i, j))
-            smell.append((i, j, k))
+            smell[i][j] = k
 
 
 first_dir = [list(map(int, input().split()))]
