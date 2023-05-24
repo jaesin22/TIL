@@ -1,31 +1,27 @@
-from math import fabs
 import sys
-from collections import deque
 input = sys.stdin.readline
 
 N = int(input())
-stack, ans, find = [], [], True
-
 now = 1
-for _ in range(N):
-    num = int(input())
+stack, res = [], []
+flag = True
 
-    while now <= num:
+for i in range(N):
+    A = int(input())
+    while now <= A:
         stack.append(now)
-        ans.append('+')
+        res.append('+')
         now += 1
-
-    if stack[-1] == num:
+    if stack[-1] == A:
         stack.pop()
-        ans.append('-')
-        
+        res.append('-')
     else:
-        find = False
+        flag = False
+    
 
+if not flag:
+    print('NO')
+    sys.exit()
 
-if not find:
-    print("NO")
-
-else:
-    for i in ans:
-        print(i)
+for i in res:
+    print(i)
