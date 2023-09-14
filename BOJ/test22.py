@@ -1,8 +1,8 @@
-from collections import deque
-skill = [[1,0,0,3,4,4],[1,2,0,2,3,2],[2,1,0,3,1,2],[1,0,1,3,3,1]]
+from itertools import permutations
 
-for x in skill:
-    A = x[0]
-    B = x[1]
-    C = x[2]
-    print(A, B, C)
+arr = ['김', '이', '박', '최', '심', '안', '유', '지', '남', '신', '현', '재', '승', '영', '진', '나', '다', '지', '경', '강', '민', '균', '승', '성', '린', '희', '연', '영']
+
+res = list(permutations(arr, 3))
+
+for i in res:
+    print(i)
