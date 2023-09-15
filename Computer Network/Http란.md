@@ -65,3 +65,5 @@ http:www.naver.com:8080/path/to/id?a=b&x=y
 전송하는 내용은 URL + 요청 메소드이다.
 
 서버는 브라우저로부터 받은 요청에 Response를 전송한다. 전송하는 내용은 상태코드 + 응답 body가 된다.
+
+참고 블로그 : https://joshua1988.github.io/web-development/http-part1
